@@ -2,8 +2,55 @@
 <html>
 <body>
 <script>
+
+
+  const playerSelection = userPlay()
+  const computerSelection = computerPlay()
+
+  function playRound(playerSelection, computerSelection) {
+    if (playerSelection == 'rock') {
+      if (computerSelection == 'rock') {
+        return 'tie';
+      } else if (computerSelection == 'paper') {
+        return 'computer wins';
+      } else {
+        return 'player wins';
+      }
+    }
+    if (playerSelection == 'paper') {
+      if (computerSelection == 'rock') {
+        return 'player wins';
+      } else if (computerSelection == 'paper') {
+        return 'tie';
+      } else {
+        return 'computer wins';
+      }
+    }
+    if (playerSelection == 'scissors') {
+      if (computerSelection == 'rock') {
+        return 'computer wins';
+      } else if (computerSelection == 'paper') {
+        return 'player wins';
+      } else {
+        return 'tie';
+      }
+    }
+  }
+
+
+
+  function userPlay() {
+    let answer = prompt('Choose your weapon.');
+    answer = answer.toLowerCase();
+    while (!(answer == 'rock' || answer == 'paper' || answer == 'scissors')) {
+      answer = prompt('Must choose Rock, Paper, or Scissors')
+      answer = answer.toLowerCase();
+    }
+    return answer;
+  }
+
   function computerPlay() {
-    let computerSelection = Math.floor(Math.random() * 3);
+    let computerSelection = [Math.floor(Math.random() * 3)];
     let compPlay = ['rock', 'paper', 'scissors'];
     return compPlay[computerSelection];
   }

@@ -3,12 +3,27 @@
 <body>
 <script>
 
+function game() {
+  const games = 5;
+  let playerWins = 0;
+  let computerWins = 0;
 
-  const playerSelection = userPlay()
-  const computerSelection = computerPlay()
+  for (let i = 0; i <= games; i++) {
+    const playerSelection = userPlay();
+    const computerSelection = computerPlay();
+    let round = playRound(playerSelection, computerSelection);
+    if (round == 'player wins') {
+       playerWins++;
+    } else if (round == 'computer wins') {
+       computerWins++;
+    } else {
 
-  function playRound(playerSelection, computerSelection) {
-    if (playerSelection == 'rock') {
+    }
+  }
+}
+
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === 'rock') {
       if (computerSelection == 'rock') {
         return 'tie';
       } else if (computerSelection == 'paper') {
@@ -17,7 +32,7 @@
         return 'player wins';
       }
     }
-    if (playerSelection == 'paper') {
+    if (playerSelection === 'paper') {
       if (computerSelection == 'rock') {
         return 'player wins';
       } else if (computerSelection == 'paper') {
@@ -26,7 +41,7 @@
         return 'computer wins';
       }
     }
-    if (playerSelection == 'scissors') {
+    if (playerSelection === 'scissors') {
       if (computerSelection == 'rock') {
         return 'computer wins';
       } else if (computerSelection == 'paper') {
@@ -37,7 +52,11 @@
     }
   }
 
-
+  function computerPlay() {
+    let computerSelection = [Math.floor(Math.random() * 3)];
+    let compPlay = ['rock', 'paper', 'scissors'];
+    return compPlay[computerSelection];
+  }
 
   function userPlay() {
     let answer = prompt('Choose your weapon.');
@@ -49,11 +68,7 @@
     return answer;
   }
 
-  function computerPlay() {
-    let computerSelection = [Math.floor(Math.random() * 3)];
-    let compPlay = ['rock', 'paper', 'scissors'];
-    return compPlay[computerSelection];
-  }
+
 
 </script>
 </body>

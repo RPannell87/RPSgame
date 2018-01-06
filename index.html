@@ -8,16 +8,18 @@ function game() {
   let playerWins = 0;
   let computerWins = 0;
 
-  for (let i = 0; i <= games; i++) {
+  for (let i = 0; i < games; i++) {
     const playerSelection = userPlay();
     const computerSelection = computerPlay();
     let round = playRound(playerSelection, computerSelection);
     if (round == 'player wins') {
        playerWins++;
+       alert("Player wins");
     } else if (round == 'computer wins') {
        computerWins++;
+       alert("Computer wins");
     } else {
-
+       alert("Tie");
     }
   }
 }
